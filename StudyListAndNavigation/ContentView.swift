@@ -15,24 +15,25 @@ var listData :[ToDoItem] = [
 ]
 
 struct ContentView: View {
+    
+    @State var toggleStatus : Bool = true
+    
     var body: some View {
-        VStack{
-            List{
-                Text("Wash the car ")
-                Text("Vacuum house ")
-                Text("Pick up kids from school bus @ 3pm ")
-                Text("Auction the kids on eBay ")
-                Text("Order Pizza for dinner ")
+        
+        List{
+            
+            Toggle(isOn : $toggleStatus){
+                Text("Allow Notifications")
             }
             
-            List(listData){ item in
+            ForEach (listData) {item in
                 HStack{
                     Image(systemName : item.imageName)
                     Text(item.task)
                 }
-                
             }
         }
+        
         
     }
 }
