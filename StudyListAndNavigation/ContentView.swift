@@ -21,17 +21,22 @@ struct ContentView: View {
     var body: some View {
         
         List{
-            
-            Toggle(isOn : $toggleStatus){
-                Text("Allow Notifications")
-            }
-            
-            ForEach (listData) {item in
-                HStack{
-                    Image(systemName : item.imageName)
-                    Text(item.task)
+            Section(header: Text("Setting")) {
+                Toggle(isOn : $toggleStatus){
+                    Text("Allow Notifications")
                 }
             }
+            Section {
+                ForEach (listData) {item in
+                    HStack{
+                        Image(systemName : item.imageName)
+                        Text(item.task)
+                    }
+                }
+            } header: {
+                Text("To Do Tasks")
+            }
+            
         }
         
         
