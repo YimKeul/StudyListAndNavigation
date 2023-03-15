@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+
+var listData :[ToDoItem] = [
+    ToDoItem(task: "Take out hte trash", imageName: "trash.circle.fill"),
+    ToDoItem(task: "Pick up the kids", imageName: "person.2.fill"),
+    ToDoItem(task: "Wash the car", imageName: "car.fill")
+]
+
 struct ContentView: View {
     var body: some View {
         VStack{
@@ -18,19 +25,12 @@ struct ContentView: View {
                 Text("Order Pizza for dinner ")
             }
             
-            List{
+            List(listData){ item in
                 HStack{
-                    Image(systemName: "trash.circle.fill")
-                    Text("Take out hte trash")
+                    Image(systemName : item.imageName)
+                    Text(item.task)
                 }
-                HStack{
-                    Image(systemName: "person.2.fill")
-                    Text("Pick up the kids")
-                }
-                HStack{
-                    Image(systemName: "car.fill")
-                    Text("Wash the car")
-                }
+                
             }
         }
         
