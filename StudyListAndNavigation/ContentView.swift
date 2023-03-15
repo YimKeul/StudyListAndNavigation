@@ -20,23 +20,31 @@ struct ContentView: View {
     
     var body: some View {
         
-        List{
-            Section(header: Text("Setting")) {
-                Toggle(isOn : $toggleStatus){
-                    Text("Allow Notifications")
-                }
-            }
-            Section {
-                ForEach (listData) {item in
-                    HStack{
-                        Image(systemName : item.imageName)
-                        Text(item.task)
+        NavigationView{
+            List{
+                Section(header: Text("Setting")) {
+                    Toggle(isOn : $toggleStatus){
+                        Text("Allow Notifications")
                     }
                 }
-            } header: {
-                Text("To Do Tasks")
+                Section {
+                    ForEach (listData) {item in
+                        HStack{
+                            NavigationLink {
+                                Text(item.task)
+                            } label: {
+                                Image(systemName : item.imageName)
+                                Text(item.task)
+                            }
+                        }
+                    }
+                } header: {
+                    Text("To Do Tasks")
+                }
+                
             }
-            
+            .navigationBarTitle(Text("To Do List"))
+
         }
         
         
