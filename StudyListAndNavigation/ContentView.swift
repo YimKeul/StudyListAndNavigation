@@ -18,6 +18,15 @@ struct ContentView: View {
     
     @State var toggleStatus : Bool = true
     
+    
+    func deleteItem(at offsets: IndexSet){
+//
+    }
+    
+    func moveItem(from source : IndexSet, to destination : Int){
+//
+    }
+    
     var body: some View {
         
         NavigationView{
@@ -38,12 +47,15 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .onDelete(perform: deleteItem)
+                    .onMove (perform: moveItem)
                 } header: {
                     Text("To Do Tasks")
                 }
                 
             }
             .navigationBarTitle(Text("To Do List"))
+            .navigationBarItems(trailing: EditButton())
 
         }
         
